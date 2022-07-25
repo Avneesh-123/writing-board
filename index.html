@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .fas{
+            font-size: 2rem;  
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+        .icon-pallet{
+            height:50px;
+            background-color: rgb(228, 227, 227);
+            width: 800px;
+            margin-left: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .red{
+            border: 2px solid;
+            background-color: pink;
+            height: 45px;
+            width: 45px;
+            border-radius: 200px;
+        }
+        .green{
+            border: 2px solid;
+            background-color: lightgreen;
+            height: 45px;
+            width: 45px;
+            border-radius: 200px;
+        }
+        .blue{
+            border: 2px solid;
+            background-color: lightblue;
+            height: 45px;
+            width: 45px;
+            border-radius: 200px;
+        }
+        /*.color-area{
+            border: 1px solid gray;
+            height: 100px;
+            width: 100px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }*/
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="icon-pallet">
+        <div class="red"></div>
+    <div class="green"></div>
+    <div class="blue"></div>
+        <!-- drawing board -->
+    <i class="fas fa-square"></i>
+    <!-- <i class="fas fa-grip-line"></i> -->
+    <i class="fas fa-grip-lines-vertical"></i>
+    </div>
+    <canvas></canvas>
+</body>
+<!-- here js is injected in html -->
+<script>
+    //canvas is used for drawing
+let canvasboard = document.querySelector("canvas");
+let body = document.querySelector("body");
+    //becase default height,width is smaller
+    canvasboard.height= window.innerHeight;
+    canvasboard.width= window.innerWidth;
+    //bacically this tool will give us the tool for rectangle
+let tool = canvasboard.getContext("2d");
+let recTool=document.querySelector(".fa-square");
+let lineTool=document.querySelector(".fa-grip-lines-vertical");
+let cTool="recTool";
+let red=document.querySelector(".red");
+let green = document.querySelector(".green");
+let blue=document.querySelector(".blue");
+//rectangle fill
+//tool.fillStyle="green";//to change colour
+//tool.fillRect(0,0,200,200);
+//to draw boundaries
+//tool.strokeStyle="blue";
+//tool.strokeRect(50,50,200,200);
+//tool.fillStyle="blue";
+//tool.fillRect(40,40,100,100);
+recTool.addEventListener("click",function(){
+    cTool="recTool";
+})
+lineTool.addEventListener("click",function(){
+    cTool="lineTool";
+})
+let boardTop=canvasboard.getBoundingClientRect().top;
+let boardLeft=canvasboard.getBoundingClientRect().left;
+let iX,iY,fX,fY;
+let drawaingmode=false;
+body.addEventListener("mousedown",function(e){
+    /*let xPos = e.clientX;
+    let yPos = e.clientY;
+    console.log(xPos,yPos)*/
+    //alert("mouse was lifted");
+    iX = e.clientX+boardLeft;
+    iY = e.clientY-boardTop;
+})
+body.addEventListener("mouseup",function(e){
+    fX = e.clientX+boardLeft;
+    fY = e.clientY-boardTop;
+    let width=fX-iX;
+    let height=fY-iY;
+    //tool.strokeRect(iX,iY,width,height);
+    if(cTool=="recTool"){
+        tool.strokeRect(iX,iY,width,height);
+    }else{
+        tool.beginPath();
+        tool.moveTo(iX,iY);
+        tool.lineTo(fX,fY);
+        tool.stroke();
+        //alert("pencil tool is comming soon");
+    }
+})
+body.addEventListener("mousedown",function(e){
+    drawaingmode=true;
+    tool.beginPath();
+    tool.moveTo(e.clientX - boardLeft, e.clientY - boardTop);
+})
+body.addEventListener("mouseup",function(e){
+    drawaingmode=false;
+})
+body.addEventListener("mousemove",function(e){
+    if(drawaingmode==false){
+        return;
+    }
+    fX=e.clientX - boardLeft;
+    fY=e.clientY - boardTop;
+    /*tool.beginPath();
+    tool.moveTo(iX,iY);*/
+    tool.lineTo(fX,fY);
+    tool.stroke();
+    iX = fX;
+    iY = fY;
+})
+red.addEventListener("click",function(){
+    tool.strokeStyle="pink"
+})
+green.addEventListener("click",function(){
+    tool.strokeStyle="lightgreen"
+})
+blue.addEventListener("click",function(){
+    tool.strokeStyle="lightblue"
+})
+</script>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    //canvas is used for drawinglet canvasboard = document.querySelector("canvas");
+    //becase default height,width is smaller
+    
+    //bacically this tool will give us the tool for rectangle
+let tool = canvasboard.getContext("2d");
+let canvasBoard = document.querySelector("canvas");
+let body = document.querySelector("body");
+let rect=document.querySelector(".fa-square");
+let lineTool=document.querySelector(".fa-grip-lines-vertical");
+let cTool="pencil";
+let red=document.querySelector(".red");
+let green = document.querySelector(".green");
+let blue=document.querySelector(".blue");
+canvasBoard.height = window.innerHeight;
+canvasBoard.width = window.innerWidth;
+</script>
+
+
+
+
+
+<!-- pencil rect line code -->
+<script>
+
+recTool.addEventListener("click",function(){
+    cTool="rect";
+})
+lineTool.addEventListener("click",function(){
+    cTool="lineTool";
+})
+let boardTop=canvasboard.getBoundingClientRect().top;
+let boardLeft=canvasboard.getBoundingClientRect().left;
+let iX,iY,fX,fY;
+let drawaingmode=false;
+body.addEventListener("mousedown",function(e){
+    /*let xPos = e.clientX;
+    let yPos = e.clientY;
+    console.log(xPos,yPos)*/
+    //alert("mouse was lifted");
+    iX = e.clientX-boardLeft;
+    iY = e.clientY-boardTop;
+    if (cTool == "pencil") {
+            drawingMode = true;
+            tool.beginPath();
+            tool.moveTo(iX, iY);
+    }
+})
+body.addEventListener("mouseup",function(e){
+    if(cTool == "pencil"){
+        drawaingmode = false;
+    }else if(cTool == "rect" || cTool == "line"){
+        fX = e.clientX+boardLeft;
+        fY = e.clientY-boardTop;
+        let width=fX-iX;
+        let height=fY-iY;
+        //tool.strokeRect(iX,iY,width,height);
+        if(cTool=="rect"){
+            tool.strokeRect(iX,iY,width,height);
+        }else if(cTool == "line"){
+            tool.beginPath();
+            tool.moveTo(iX,iY);
+            tool.lineTo(fX,fY);
+            tool.stroke();
+            //alert("pencil tool is comming soon");
+    }
+    }
+})
+/* body.addEventListener("mousedown",function(e){
+    iX=e.clientX-boardLeft
+    iY=e.clientY-boardTop
+    if(cTool=="pencil"){
+        drawaingmode=true;
+        tool.beginPath();
+         tool.moveTo(iX, iY);
+    }
+})
+body.addEventListener("mouseup",function(e){
+    if(cTool=="pencil"){
+        drawaingmode=false;
+    }else{
+        //rec,line
+        fX = e.clientX+boardLeft;
+        fY = e.clientY-boardTop;
+        let width=fX-iX;
+        let height=fY-iY;
+        if(cTool=="recTool"){
+        tool.strokeRect(iX,iY,width,height);
+     }else{
+        tool.beginPath();
+        tool.moveTo(iX,iY);
+        tool.lineTo(fX,fY);
+        tool.stroke();
+    //alert("pencil tool is comming soon")
+    }
+    }
+})*/
+body.addEventListener("mousemove",function(e){
+    if(drawaingmode==false){
+        return;
+    }
+            fX=e.clientX - boardLeft;
+            fY=e.clientY - boardTop;
+    /*tool.beginPath();
+    tool.moveTo(iX,iY);*/
+            tool.lineTo(fX,fY);
+            tool.stroke();
+            iX = fX;
+            iY = fY;
+})
+</script>
+<script>
+    let pencil = document.querySelector("#pencil");
+    let eraser = document.querySelector("#eraser");
+    let rect = document.querySelector("#rect");
+    let line = document.querySelector("#line");
+    let options = document.querySelectorAll(".size-box");
+    //basically its default current tool
+    pencil.addEventListener("click",function(e){
+        if(cTool=="pencil"){
+            options[0].style.display="flex";
+        }
+        else{
+            for(let i=0;i<options.length;i++){
+                options[i].style.display="none";
+            }
+            cTool="pencil";
+        }
+    })
+    eraser.addEventListener("click",function(e){
+        if(cTool=="eraser"){
+            options[1].style.display="flex";
+        }
+        else{
+            cTool="eraser";
+            for(let i=0;i<options.length;i++){
+                options[i].style.display="none";
+            }
+        }
+    })
+    rect.addEventListener("click",function(e){
+        if(cTool=="rect"){
+            options[2].style.display="flex";
+        }
+        else{
+            for(let i=0;i<options.length;i++){
+                options[i].style.display="none";
+            }
+            cTool="rect";
+        }
+    })
+    line.addEventListener("click",function(e){
+        if(cTool=="line"){
+            options[3].style.display="flex";
+        }
+        else{
+            for(let i=0;i<options.length;i++){
+                options[i].style.display="none";
+            }
+            cTool="line";
+        }
+    })
+</script>
+<script>
+        red.addEventListener("click",function(){
+        tool.strokeStyle="pink"
+    })
+    green.addEventListener("click",function(){
+        tool.strokeStyle="lightgreen"
+    })
+    blue.addEventListener("click",function(){
+        tool.strokeStyle="lightblue"
+    })
+</script>

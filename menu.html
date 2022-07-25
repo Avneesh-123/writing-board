@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="toolbar">
+        <div class="tool" id="pencil">
+            <img src="pencil.png" alt="" class="tool-img">
+            <div class="size-box">
+                <div class="size1 size"></div>
+                <div class="size2 size"></div>
+                <div class="size3 size"></div>
+                <div class="size4 size"></div>
+            </div>
+        </div>
+        <div class="tool" id="eraser">
+            <img src="eraser.png" alt="" class="tool-img">
+            <div class="size-box">
+                <div class="size1 size"></div>
+                <div class="size2 size"></div>
+                <div class="size3 size"></div>
+                <div class="size4 size"></div>
+            </div>
+        </div>
+        <div class="tool" id="rect">
+            <i class="fas fa-square"></i>
+    
+            <div class="size-box">
+                <div class="size1 size"></div>
+                <div class="size2 size"></div>
+                <div class="size3 size"></div>
+                <div class="size4 size"></div>
+            </div>
+        </div>
+            <div class="tool" id="line">
+                <i class="fas fa-grip-lines-vertical"></i>
+                <div class="size-box">
+                    <div class="size1 size"></div>
+                    <div class="size2 size"></div>
+                    <div class="size3 size"></div>
+                    <div class="size4 size"></div>
+                </div>
+            </div>
+                <div class="tool" id="sticky">
+                    <img src="sticky_tool.png" alt="" class="tool-img">
+                    </div>
+        <div class="color-content">
+            <div class="red"></div>
+            <div class="green"></div>
+            <div class="blue"></div>
+        </div>
+    </div>
+    <canvas></canvas>
+    <script src="variable_dec.js"></script>
+
+    <!-- pencil rect line code  -->
+    <script src="pencil_tool.js"></script>
+    <!-- tool change -->
+    <script src="tool_change.js"></script>
+    <!-- color change -->
+    <script src="color_change.js"></script>
+    <script src="sticky.js"></script>
+<!-- size change -->
+    </body>
+</html>

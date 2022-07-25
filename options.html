@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .size-box{
+        width: 150px;
+        height: 30px;
+        border: 1px solid grey;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;   
+    }
+    .size{
+        background-color: darkcyan;
+        border-radius: 50%;
+    }.size1{
+        height: 10px;
+        width: 10px;
+    }
+    .size2{
+        height: 15px;
+        width: 15px;
+    }
+    .size3{
+        height: 20px;
+        width: 20px;
+    }
+    .size4{
+        height: 25px;
+        width: 25px;
+    }
+</style>
+<body>
+    <div class="size-box">
+        <div class="size1 size"></div>
+        <div class="size2 size"></div>
+        <div class="size3 size"></div>
+        <div class="size4 size"></div>
+    </div>
+    <script>
+        let sizeBoxArr=document.querySelector(".size-box");
+        sizeBox[0].addEventListener("click",function(e){
+            let elem=["size1","size2","size3","size4"];
+    
+            console.log(e.target);
+            let allclass=e.target.classList;
+            let firstclass=allclass[0];
+            let test = elem.include(firstclass);
+            if(test){
+                if(firstclass=="size1"){
+                    pencilSize=5;
+                }else if(firstclass=="size2"){
+                    pencilSize=10;
+                }else if(firstclass=="size3"){
+                    pencilSize=15;
+                }else if(firstclass=="size4"){
+                    pencilSize=20;
+                }
+            }
+            console.log("pencilSize"+pencilSize);
+        })
+        sizeBox[1].addEventListener("click",function(e){
+            let elem=["size1","size2","size3","size4"];
+    
+            console.log(e.target);
+            let allclass=e.target.classList;
+            let firstclass=allclass[0];
+            let test = elem.include(firstclass);
+            if(test){
+                if(firstclass=="size1"){
+                    eraserSize=5;
+                }else if(firstclass=="size2"){
+                    eraserSize=10;
+                }else if(firstclass=="size3"){
+                    eraserSize=15;
+                }else if(firstclass=="size4"){
+                    eraserSize=20;
+                }
+            }
+        })
+        sizeBox[3].addEventListener("click",function(e){
+            let elem=["size1","size2","size3","size4"];
+    
+            console.log(e.target);
+            let allclass=e.target.classList;
+            let firstclass=allclass[0];
+            let test = elem.include(firstclass);
+            if(test){
+                if(firstclass=="size1"){
+                        rectSize=5;
+                }else if(firstclass=="size2"){
+                        rectSize=10;
+                }else if(firstclass=="size3"){
+                    rectSize=15;
+                }else if(firstclass=="size4"){
+                        rectSize=20;
+                }
+            }
+        })
+        sizeBox[4].addEventListener("click",function(e){
+            let elem=["size1","size2","size3","size4"];
+    
+            console.log(e.target);
+            let allclass=e.target.classList;
+            let firstclass=allclass[0];
+            let test = elem.include(firstclass);
+            if(test){
+                if(firstclass=="size1"){
+                    lineSize=5;
+                }else if(firstclass=="size2"){
+                    lineSize=10;
+                }else if(firstclass=="size3"){
+                    lineSize=15;
+                }else if(firstclass=="size4"){
+                    lineSize=20;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
